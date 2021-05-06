@@ -1,7 +1,7 @@
 cachetools==2.1.0
 commonmark==0.5.4
 flask==1.0.4                   # behind by four releases, possibly incompatible upgrade
-flask-cors==3.0.3
+flask-cors==3.0.9
 inflect==2.1.0                  # was 0.3.1, old
 luigi==2.8.6                    # was >2.8.0, could be dangerous since several broken releases > 2.8.0
 msgpack-python==0.5.6           # different name (pip uses 'msgpack'), was >=3.0,<0.6
