@@ -2,7 +2,7 @@ antlr4-python3-runtime==4.7.1   # latest conda package is only 4.7.0
 cachetools==2.1.0
 commonmark==0.5.4
 flask==1.0.4                  # behind by four releases, possibly incompatible upgrade
-flask-cors==3.0.3
+flask-cors==3.0.9
 gunicorn==19.9.0
 inflect==2.1.0                  # upgraded from ancient 0.3.1
 luigi==2.8.6                    # upgraded, was >=2.8.0, dangerous since several broken releases after 2.8.0
