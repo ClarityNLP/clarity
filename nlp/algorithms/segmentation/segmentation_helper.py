@@ -246,34 +246,21 @@ def _fix_broken_tokens(sentence_list):
     with the other piece of the token.
     """
 
-    broken_list = []
-    n = len(sentence_list)
-    for i in range(len(sentence_list)-2):
-        s1 = sentence_list[i]
+    fixed = [sentence_list[0]]
+    for i in range(len(sentence_list)-1):
+        s1 = fixed[-1]
         s2 = sentence_list[i+1]
         if s1.endswith('&') and s2.startswith('&'):
-            broken_list.append(i)
+            fixed[-1] += s2
         else:
             if s2.startswith(_DELIMITER):
-                match = re.search(r'&&[A-Z]+\d\d\d\d\Z', s1)
+                match = re.search(r'&&[A-Z_]+\d\d\d\d\Z', s1)
                 if match:
-                    broken_list.append(i)
+                    fixed[-1] += s2
+            else:
+                fixed.append(s2)
 
-    if 0 == len(broken_list):
-        return sentence_list
-
-    # concatenate sentences with broken tokens
-    for i in broken_list:
-        assert i+1 < len(sentence_list)
-        sentence_list[i] += sentence_list[i+1]
-        sentence_list[i+1] = ''
-
-    new_sentences = []
-    for s in sentence_list:
-        if len(s) > 0:
-            new_sentences.append(s)
-
-    return new_sentences
+    return fixed
 
     
 ###############################################################################
